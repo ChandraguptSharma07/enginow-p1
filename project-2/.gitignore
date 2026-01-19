@@ -1,0 +1,6 @@
+notes/
+.xalka/
+__pycache__/
+*.pyc
+.env
+.vscode/
