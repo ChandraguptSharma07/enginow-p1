@@ -4,14 +4,18 @@ import streamlit as st
 import pandas as pd
 import numpy as np
 import pickle
+from pathlib import Path
+
+# get the directory where this script is located
+SCRIPT_DIR = Path(__file__).parent
 
 st.set_page_config(page_title="Credit Risk Predictor", page_icon="💰", layout="wide")
 
 @st.cache_resource
 def load_model():
-    with open('models/best_model.pkl', 'rb') as f:
+    with open(SCRIPT_DIR / 'models' / 'best_model.pkl', 'rb') as f:
         model = pickle.load(f)
-    with open('data/processed/scaler.pkl', 'rb') as f:
+    with open(SCRIPT_DIR / 'data' / 'processed' / 'scaler.pkl', 'rb') as f:
         scaler = pickle.load(f)
     return model, scaler
 
